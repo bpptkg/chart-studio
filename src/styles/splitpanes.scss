@@ -1,0 +1,118 @@
+.splitpanes {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  &--vertical {
+    flex-direction: row;
+  }
+  &--horizontal {
+    flex-direction: column;
+  }
+  &--dragging * {
+    user-select: none;
+  }
+  &__pane {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    .splitpanes--vertical & {
+      transition: width 0.2s ease-out;
+    }
+    .splitpanes--horizontal & {
+      transition: height 0.2s ease-out;
+    }
+    .splitpanes--dragging & {
+      transition: none;
+    }
+  }
+  // Disable default zoom behavior on touch device when double tapping splitter.
+  &__splitter {
+    touch-action: none;
+  }
+  &--vertical > .splitpanes__splitter {
+    min-width: 2px;
+    cursor: col-resize;
+  }
+  &--horizontal > .splitpanes__splitter {
+    min-height: 2px;
+    cursor: row-resize;
+  }
+}
+
+.splitpanes.cs-theme {
+  background-color: #f5f5f5;
+
+  .splitpanes__pane {
+    background-color: #fff;
+  }
+  .splitpanes__splitter {
+    box-sizing: border-box;
+    position: relative;
+    flex-shrink: 0;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: opacity 0.4s;
+      background-color: #d5d5d5;
+      opacity: 0;
+      z-index: 10;
+    }
+    &:hover:before {
+      opacity: 1;
+    }
+    &:first-child {
+      cursor: auto;
+    }
+  }
+}
+.cs-theme {
+  &.splitpanes .splitpanes .splitpanes__splitter {
+    z-index: 1;
+  }
+  &.splitpanes--vertical > .splitpanes__splitter,
+  .splitpanes--vertical > .splitpanes__splitter {
+    width: 1px;
+    border-left: 1px solid #eee;
+    margin-left: -1px;
+    &:before {
+      left: -4px;
+      right: -4px;
+      height: 100%;
+    }
+  }
+  &.splitpanes--horizontal > .splitpanes__splitter,
+  .splitpanes--horizontal > .splitpanes__splitter {
+    height: 1px;
+    border-top: 1px solid #eee;
+    margin-top: -1px;
+    &:before {
+      top: -4px;
+      bottom: -4px;
+      width: 100%;
+    }
+  }
+}
+
+.splitpanes.cs-theme--dark {
+  background-color: #121212;
+
+  .splitpanes__pane {
+    background-color: #303030;
+  }
+}
+
+.cs-theme--dark {
+  &.splitpanes--vertical > .splitpanes__splitter,
+  .splitpanes--vertical > .splitpanes__splitter {
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  &.splitpanes--horizontal > .splitpanes__splitter,
+  .splitpanes--horizontal > .splitpanes__splitter {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
