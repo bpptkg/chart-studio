@@ -44,7 +44,7 @@
             <div class="dtype-config">
               <component
                 :is="ComponentOptionsMap[selected[0]]"
-                :config="config"
+                :config="config as any"
                 @update="handleUpdate"
               ></component>
             </div>

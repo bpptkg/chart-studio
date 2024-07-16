@@ -29,7 +29,7 @@
           <component
             class="mt-2"
             :is="ComponentOptionsMap[series.dataType]"
-            :config="series.config"
+            :config="series.config as any"
             @update="handleUpdate"
             show-extra-props
           >

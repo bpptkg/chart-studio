@@ -22,7 +22,7 @@
       <v-card-text class="mt-2">
         <component
           :is="ComponentOptionsMap[subplot.dataType]"
-          :config="config"
+          :config="config as any"
           @update="handleUpdate"
         ></component>
       </v-card-text>
