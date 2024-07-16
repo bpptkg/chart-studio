@@ -5,6 +5,10 @@ import {
   DoasData,
   EdmConfig,
   EdmData,
+  GBInsarAreaConfig,
+  GBInsarAreaData,
+  GBInsarPointConfig,
+  GBInsarPointData,
   GpsBaselineConfig,
   GpsBaselineData,
   GpsCoordinateConfig,
@@ -29,6 +33,8 @@ import {
   SeismicityData,
   SeriesDataKey,
   SubplotConfig,
+  ThermalAxisKaliurangConfig,
+  ThermalAxisKaliurangData,
   ThermalConfig,
   ThermalData,
   TiltmeterConfig,
@@ -39,10 +45,10 @@ import {
   VogamosTemperatureData,
   WeatherBabadanConfig,
   WeatherBabadanResponseData,
-  WeatherPasarbubarConfig,
-  WeatherPasarbubarResponseData,
   WeatherJurangJeroConfig,
   WeatherJurangJeroResponseData,
+  WeatherPasarbubarConfig,
+  WeatherPasarbubarResponseData,
 } from '@/model/types'
 import { isDef } from '@/shared/util'
 import { SeriesOption } from 'echarts'
@@ -51,6 +57,8 @@ import objectHash from 'object-hash'
 import { createDoasSeries } from './doas'
 import { createEdmSeries } from './edm'
 import { createEmptySeries } from './empty'
+import { createGBInsarAreaSeries } from './gbInsarArea'
+import { createGBInsarPointSeries } from './gbinsarPoint'
 import { createGpsBaselineSeries } from './gpsBaseline'
 import { createGpsCoordinateSeries } from './gpsCoordinate'
 import { createLavaDomesSeries } from './lavaDomes'
@@ -63,13 +71,14 @@ import { createRsamSeismicSeries } from './rsamSeismic'
 import { createSeismicEnergySeries } from './seismicEnergy'
 import { createSeismicitySeries } from './seismicity'
 import { createThermalSeries } from './thermal'
+import { createThermalAxisKaliurangSeries } from './thermalAxisKaliurang'
 import { createTiltmeterSeries } from './tiltmeter'
+import { findYAxisIndex } from './util'
 import { createVogamosEmissionSeries } from './vogamosEmission'
 import { createVogamosTemperatureSeries } from './vogamosTemperature'
 import { createWeatherBabadanSeries } from './weatherBabadan'
-import { createWeatherPasarbubarSeries } from './weatherPasarbubar'
 import { createWeatherJurangJeroSeries } from './weatherJurangJero'
-import { findYAxisIndex } from './util'
+import { createWeatherPasarbubarSeries } from './weatherPasarbubar'
 
 export function renderSeries(
   subplots: SubplotConfig[],
@@ -321,6 +330,42 @@ export function renderSeries(
 
               const cfg = config as ThermalConfig
               return createThermalSeries(data, cfg, { xAxisIndex, yAxisIndex })
+            }
+
+            case 'GBInsarArea': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as GBInsarAreaData[]
+
+              const cfg = config as GBInsarAreaConfig
+              return createGBInsarAreaSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'GBInsarPoint': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as GBInsarPointData[]
+
+              const cfg = config as GBInsarPointConfig
+              return createGBInsarPointSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'ThermalAxisKaliurang': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as ThermalAxisKaliurangData[]
+
+              const cfg = config as ThermalAxisKaliurangConfig
+              return createThermalAxisKaliurangSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
             }
 
             default:

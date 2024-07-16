@@ -8,6 +8,8 @@ import {
 
 import { createDoasSeriesTooltip } from './doas'
 import { createEdmSeriesTooltip } from './edm'
+import { createGBInsarAreaSeriesTooltip } from './gbInsarArea'
+import { createGBInsarPointSeriesTooltip } from './gbinsarPoint'
 import { createGpsBaselineSeriesTooltip } from './gpsBaseline'
 import { createGpsCoordinateSeriesTooltip } from './gpsCoordinate'
 import { createLavaDomesSeriesTooltip } from './lavaDomes'
@@ -20,12 +22,13 @@ import { createRsamSeismicSeriesTooltip } from './rsamSeismic'
 import { createSeismicEnergySeriesTooltip } from './seismicEnergy'
 import { createSeismicitySeriesTooltip } from './seismicity'
 import { createThermalSeriesTooltip } from './thermal'
+import { createThermalAxisKaliurangSeriesTooltip } from './thermalAxisKaliurang'
 import { createTiltmeterSeriesTooltip } from './tiltmeter'
 import { createVogamosEmissionSeriesTooltip } from './vogamosEmission'
 import { createVogamosTemperatureSeriesTooltip } from './vogamosTemperature'
 import { createWeatherBabadanSeriesTooltip } from './weatherBabadan'
-import { createWeatherPasarbubarSeriesTooltip } from './weatherPasarbubar'
 import { createWeatherJurangJeroSeriesTooltip } from './weatherJurangJero'
+import { createWeatherPasarbubarSeriesTooltip } from './weatherPasarbubar'
 
 export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
   const tooltip: string[] = []
@@ -96,6 +99,15 @@ export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
           break
         case 'WeatherJurangJero':
           tooltip.push(createWeatherJurangJeroSeriesTooltip(params, index))
+          break
+        case 'GBInsarArea':
+          tooltip.push(createGBInsarAreaSeriesTooltip(params, index))
+          break
+        case 'GBInsarPoint':
+          tooltip.push(createGBInsarPointSeriesTooltip(params, index))
+          break
+        case 'ThermalAxisKaliurang':
+          tooltip.push(createThermalAxisKaliurangSeriesTooltip(params, index))
           break
       }
     } catch (error) {

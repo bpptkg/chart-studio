@@ -92,7 +92,7 @@ export function createRsamSeismicYAxisOption(
   config: RsamSeismicConfig
 ): YAXisOption {
   return {
-    name: rsamBands.find((v) => v.value === config.band)?.text,
+    name: rsamBands.find((v) => v.value === config.band)?.title,
     nameGap: 60,
   }
 }

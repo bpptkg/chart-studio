@@ -7,6 +7,8 @@ import {
   DateInterval,
   DoasConfig,
   EdmConfig,
+  GBInsarAreaConfig,
+  GBInsarPointConfig,
   GpsBaselineConfig,
   GpsCoordinateConfig,
   LavaDomesConfig,
@@ -16,6 +18,7 @@ import {
   SeismicEnergyConfig,
   SeismicityConfig,
   SeriesConfig,
+  ThermalAxisKaliurangConfig,
   ThermalConfig,
   TiltmeterConfig,
 } from './types'
@@ -464,6 +467,49 @@ export function createRequest<T extends DataType>(
           fields: 'timestamp,temperature,density',
         },
         signal: controller.signal,
+      })
+    }
+
+    case 'GBInsarPoint': {
+      const config = seriesConfig.config as GBInsarPointConfig
+
+      return api.get('/gbinsar/babadanpoint/', {
+        params: {
+          start: start,
+          end: end,
+          sampling: config.sampling,
+        },
+        signal: controller.signal,
+      })
+    }
+
+    case 'GBInsarArea': {
+      const config = seriesConfig.config as GBInsarAreaConfig
+
+      return api.get('/gbinsar/babadanarea/', {
+        params: {
+          start: start,
+          end: end,
+          sampling: config.sampling,
+        },
+        signal: controller.signal,
+      })
+    }
+
+    case 'ThermalAxisKaliurang': {
+      const config = seriesConfig.config as ThermalAxisKaliurangConfig
+
+      return api.get('/thermal-axis-kal/', {
+        params: {
+          start: start,
+          end: end,
+          area: config.area,
+          sampling: config.sampling,
+          use_sky_filter: config.useSkyFilter,
+          field_type: config.fieldType,
+          aggregate: config.aggregate,
+          sky_filter_aggregate: config.skyFilterAggregate,
+        },
       })
     }
 

@@ -123,6 +123,28 @@ export function createSeriesConfig<T extends DataType = DataType>(
         field: 'temperature',
       }
 
+    case 'GBInsarPoint':
+      return {
+        field: 'rb1',
+        sampling: 'hour',
+      }
+
+    case 'GBInsarArea':
+      return {
+        field: 'kubahlava',
+        sampling: 'hour',
+      }
+
+    case 'ThermalAxisKaliurang':
+      return {
+        area: 'kubah-bd',
+        sampling: 'hour',
+        useSkyFilter: true,
+        fieldType: 'max_temp',
+        aggregate: 'avg',
+        skyFilterAggregate: 'avg',
+      }
+
     default:
       throw new Error(`Unsupported data type: ${dataType}`)
   }

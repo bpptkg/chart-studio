@@ -1,5 +1,8 @@
 import {
+  YAxisOption as CSYAxisOption,
   EdmConfig,
+  GBInsarAreaConfig,
+  GBInsarPointConfig,
   GpsBaselineConfig,
   GpsCoordinateConfig,
   LavaDomesConfig,
@@ -13,18 +16,20 @@ import {
   SeismicityConfig,
   SeriesConfig,
   SubplotConfig,
+  ThermalAxisKaliurangConfig,
   ThermalConfig,
   TiltmeterConfig,
   VogamosEmissionConfig,
   VogamosTemperatureConfig,
   WeatherBabadanConfig,
-  WeatherPasarbubarConfig,
   WeatherJurangJeroConfig,
-  YAxisOption as CSYAxisOption,
+  WeatherPasarbubarConfig,
 } from '@/model/types'
 import { YAXisOption } from 'echarts/types/dist/shared'
 
 import { createEdmYAxisOption } from './edm'
+import { createGBInsarAreaYAxisOption } from './gbInsarArea'
+import { createGBInsarPointYAxisOption } from './gbinsarPoint'
 import { createGpsBaselineYAxisOption } from './gpsBaseline'
 import { createGpsCoordinateYAxisOption } from './gpsCoordinate'
 import { createLavaDomesYAxisOption } from './lavaDomes'
@@ -37,12 +42,13 @@ import { createRsamSeismicYAxisOption } from './rsamSeismic'
 import { createSeismicEnergyYAxisOption } from './seismicEnergy'
 import { createSeismicityYAxisOption } from './seismicity'
 import { createThermalYAxisOption } from './thermal'
+import { createThermalAxisKaliurangYAxisOption } from './thermalAxisKaliurang'
 import { createTiltmeterYAxisOption } from './tiltmeter'
 import { createVogamosEmissionYAxisOption } from './vogamosEmission'
 import { createVogamosTemperatureYAxisOption } from './vogamosTemperature'
 import { createWeatherBabadanYAxisOption } from './weatherBabadan'
-import { createWeatherPasarbubarYAxisOption } from './weatherPasarbubar'
 import { createWeatherJurangJeroYAxisOption } from './weatherJurangJero'
+import { createWeatherPasarbubarYAxisOption } from './weatherPasarbubar'
 
 export function getLeftYAxisSeries(subplot: SubplotConfig): SeriesConfig[] {
   return subplot.series.filter((series) => {
@@ -104,6 +110,14 @@ export function getYAxisOption(series: SeriesConfig[]): YAXisOption[] {
       case 'WeatherJurangJero':
         return createWeatherJurangJeroYAxisOption(
           config as WeatherJurangJeroConfig
+        )
+      case 'GBInsarArea':
+        return createGBInsarAreaYAxisOption(config as GBInsarAreaConfig)
+      case 'GBInsarPoint':
+        return createGBInsarPointYAxisOption(config as GBInsarPointConfig)
+      case 'ThermalAxisKaliurang':
+        return createThermalAxisKaliurangYAxisOption(
+          config as ThermalAxisKaliurangConfig
         )
       default:
         return {}

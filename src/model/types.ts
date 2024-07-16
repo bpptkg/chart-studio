@@ -160,6 +160,44 @@ export interface ThermalParameterConfig {
   field: 'temperature' | 'density'
 }
 
+export interface GBInsarPointParameterConfig {
+  field:
+    | 'bawah1998'
+    | 'bawah_rb2'
+    | 'rb1'
+    | 'rb2_rts'
+    | 'rb3_rts'
+    | 't1992'
+    | 't1998'
+    | 'titik_stabil'
+  sampling: 'day' | 'hour' | 'minute'
+}
+
+export interface GBInsarAreaParameterConfig {
+  field:
+    | 'kubahlava'
+    | 'area1888'
+    | 'atas1888'
+    | 'tengah1888'
+    | 'bawah1888'
+    | 'a1956'
+    | 'a1998'
+    | 'a1992'
+    | 'stabil'
+    | 'bawah1998'
+    | 'puncak_kubah'
+  sampling: 'day' | 'hour' | 'minute'
+}
+
+export interface ThermalAxisKaliurangParameterConfig {
+  area: string
+  sampling: 'day' | 'hour' | 'minute'
+  useSkyFilter: boolean
+  fieldType: 'min_temp' | 'max_temp' | 'avg_temp'
+  aggregate: 'avg' | 'min' | 'max'
+  skyFilterAggregate: 'avg' | 'min' | 'max'
+}
+
 export type DoasConfig = ParameterConfig<DoasParameterConfig>
 export type EdmConfig = ParameterConfig<EdmParameterConfig>
 export type GpsBaselineConfig = ParameterConfig<GpsBaselineParameterConfig>
@@ -187,6 +225,10 @@ export type WeatherPasarbubarConfig =
   ParameterConfig<WeatherPasarbubarParameterConfig>
 export type WeatherJurangJeroConfig =
   ParameterConfig<WeatherJurangJeroParameterConfig>
+export type GBInsarPointConfig = ParameterConfig<GBInsarPointParameterConfig>
+export type GBInsarAreaConfig = ParameterConfig<GBInsarAreaParameterConfig>
+export type ThermalAxisKaliurangConfig =
+  ParameterConfig<ThermalAxisKaliurangParameterConfig>
 
 export type ParameterConfigType =
   | DoasConfig
@@ -209,6 +251,9 @@ export type ParameterConfigType =
   | WeatherBabadanConfig
   | WeatherPasarbubarConfig
   | WeatherJurangJeroConfig
+  | GBInsarPointConfig
+  | GBInsarAreaConfig
+  | ThermalAxisKaliurangConfig
 
 export interface ParameterConfigMap {
   Doas: DoasConfig
@@ -231,6 +276,9 @@ export interface ParameterConfigMap {
   WeatherBabadan: WeatherBabadanConfig
   WeatherPasarbubar: WeatherPasarbubarConfig
   WeatherJurangJero: WeatherJurangJeroConfig
+  GBInsarPoint: GBInsarPointConfig
+  GBInsarArea: GBInsarAreaConfig
+  ThermalAxisKaliurang: ThermalAxisKaliurangConfig
 }
 
 export type DataType = keyof ParameterConfigMap
@@ -257,6 +305,9 @@ export const DataTypeNameMap: DataTypeNameMapInternal = {
   WeatherPasarbubar: 'Weather Pasarbubar',
   WeatherJurangJero: 'Weather Jurang Jero',
   WeatherBabadan: 'Weather Babadan',
+  GBInsarPoint: 'GBInsar Babadan Point',
+  GBInsarArea: 'GBInsar Babadan Area',
+  ThermalAxisKaliurang: 'Thermal Axis Kaliurang',
 }
 
 export interface SeismicityData {
@@ -497,6 +548,38 @@ export interface ThermalData {
   readonly density: number
 }
 
+export interface GBInsarAreaData {
+  readonly timestamp: string
+  readonly kubahlava: number
+  readonly area1888: number
+  readonly atas1888: number
+  readonly tengah1888: number
+  readonly bawah1888: number
+  readonly a1956: number
+  readonly a1998: number
+  readonly a1992: number
+  readonly stabil: number
+  readonly bawah1998: number
+  readonly puncak_kubah: number
+}
+
+export interface GBInsarPointData {
+  readonly timestamp: string
+  readonly bawah1998: number
+  readonly bawah_rb2: number
+  readonly rb1: number
+  readonly rb2_rts: number
+  readonly rb3_rts: number
+  readonly t1992: number
+  readonly t1998: number
+  readonly titik_stabil: number
+}
+
+export interface ThermalAxisKaliurangData {
+  readonly timestamp: string
+  readonly temp: number
+}
+
 export interface DataItemTypeMap {
   Seismicity: SeismicityData
   Edm: EdmData
@@ -519,6 +602,9 @@ export interface DataItemTypeMap {
   Magnetic: MagneticData
   Thermal: ThermalData
   WeatherJurangJero: WeatherBabadanResponseData
+  GBInsarPoint: GBInsarPointData
+  GBInsarArea: GBInsarAreaData
+  ThermalAxisKaliurang: ThermalAxisKaliurangData
 }
 
 export enum DateIntervalType {
