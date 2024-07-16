@@ -69,11 +69,9 @@ export default defineConfig({
     VitePWA({ registerType: 'autoUpdate' }),
   ],
   define: {
-    'process.env': {
-      APP_VERSION: APP_VERSION,
-      COMMIT_HASH: COMMIT_HASH,
-      BUILD_DATE: BUILD_DATE,
-    },
+    'import.meta.env.APP_VERSION': JSON.stringify(APP_VERSION),
+    'import.meta.env.COMMIT_HASH': JSON.stringify(COMMIT_HASH),
+    'import.meta.env.BUILD_DATE': JSON.stringify(BUILD_DATE),
   },
   resolve: {
     alias: {
