@@ -8,10 +8,6 @@ Merapi monitoring data using [BMA](https://bma.cendana15.com/) Web Services.
 There are several required environment variables that need to be set in
 `.env.[mode].local` file:
 
-- VITE_BASE_URL
-
-  Base URL to serve the static files. Default to `/`.
-
 - VITE_BMA_URL
 
   BMA web services URL, e.g. `https://bma.cendana15.com` to fetch various
