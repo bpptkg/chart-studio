@@ -9,50 +9,50 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import logo from '@/assets/logo.svg'
+  import { computed, ref } from 'vue'
+  import logo from '@/assets/logo.svg'
 
-const screenwidth = ref(window.innerWidth)
-const isMobile = computed(() => {
-  return screenwidth.value < 768
-})
+  const screenwidth = ref(window.innerWidth)
+  const isMobile = computed(() => {
+    return screenwidth.value < 768
+  })
 
-window.addEventListener('resize', () => {
-  screenwidth.value = window.innerWidth
-})
+  window.addEventListener('resize', () => {
+    screenwidth.value = window.innerWidth
+  })
 </script>
 
 <style lang="css">
-html {
-  overflow-y: auto;
-}
-.v-tab {
-  text-transform: none !important;
-}
-
-@media (max-width: 767px) {
-  html,
-  body,
-  #app {
-    height: 100%;
+  html {
+    overflow-y: auto;
+  }
+  .v-tab {
+    text-transform: none !important;
   }
 
-  .mobile {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  @media (max-width: 767px) {
+    html,
+    body,
+    #app {
+      height: 100%;
+    }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 2rem;
+    .mobile {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 2rem;
+    }
   }
-}
 </style>
