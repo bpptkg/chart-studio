@@ -92,9 +92,9 @@
   import { onMounted } from 'vue'
   import { useTheme } from 'vuetify'
 
-  const version = import.meta.env.VITE_APP_VERSION
-  const commitHash = import.meta.env.VITE_APP_COMMIT_HASH
-  const buildDate = import.meta.env.VITE_APP_BUILD_DATE
+  const version = process.env.APP_VERSION
+  const commitHash = process.env.COMMIT_HASH
+  const buildDate = process.env.BUILD_DATE
 
   const buildDuration = moment(buildDate).fromNow()
 
