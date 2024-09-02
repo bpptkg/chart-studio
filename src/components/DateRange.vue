@@ -88,7 +88,7 @@
                   offset-y
                   min-width="auto"
                 >
-                  <template v-slot:activator="props">
+                  <template v-slot:activator="{ props }">
                     <v-text-field
                       v-model="start"
                       label="Start date"
@@ -113,7 +113,7 @@
                   offset-y
                   min-width="auto"
                 >
-                  <template v-slot:activator="props">
+                  <template v-slot:activator="{ props }">
                     <v-text-field
                       v-model="end"
                       label="End date"
@@ -157,7 +157,7 @@
 <script setup lang="ts">
   import { DateInterval } from '@/model/types'
   import { DATE_FORMAT } from '@/constants/datetime'
-  import moment from 'moment'
+  import moment from 'moment';
   import { computed, Ref, ref, watch } from 'vue'
 
   interface Props {
@@ -188,7 +188,7 @@
     After = 1,
   }
   const dateIntervalOffsetIndex: Ref<number> = ref(0)
-  const offset: Ref<string> = ref(moment().format(DATE_FORMAT))
+  const offset: Ref<Date> = ref(new Date())
   const menuOffset: Ref<boolean> = ref(false)
   const beforeAfter: Ref<BeforeAfterType> = ref(BeforeAfterType.Before)
   const beforeAfterOptions = ref([
@@ -199,8 +199,8 @@
   // Custom range.
   const menu1 = ref(false)
   const menu2 = ref(false)
-  const start = ref(props.interval.start)
-  const end = ref(props.interval.end)
+  const start = ref(new Date(props.interval.start))
+  const end = ref(new Date(props.interval.end))
 
   // Interval radio button options
   const dateIntervalOptions = ref([
@@ -228,12 +228,12 @@
   function resetDateIntervalState(): void {
     // Offset mode.
     dateIntervalOffsetIndex.value = 0
-    offset.value = moment().format(DATE_FORMAT)
+    offset.value = new Date()
     beforeAfter.value = BeforeAfterType.Before
 
     // Custom mode.
-    start.value = props.interval.start
-    end.value = props.interval.end
+    start.value = new Date(props.interval.start)
+    end.value = new Date(props.interval.end)
   }
 
   function handleSave(): void {
@@ -263,8 +263,8 @@
     } else if (tabIndex.value === IntervalType.Custom) {
       // Interval custom mode.
       emit('update', {
-        start: start.value,
-        end: end.value,
+        start: moment(start.value).format(DATE_FORMAT),
+        end: moment(end.value).format(DATE_FORMAT),
       })
     }
 
