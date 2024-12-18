@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     DateRange: typeof import('./components/DateRange.vue')['default']
     DoasOptions: typeof import('./components/options/DoasOptions.vue')['default']
+    DoasScanOptions: typeof import('./components/options/DoasScanOptions.vue')['default']
     EdmOptions: typeof import('./components/options/EdmOptions.vue')['default']
     GBInsarAreaOptions: typeof import('./components/options/GBInsarAreaOptions.vue')['default']
     GBInsarPointOptions: typeof import('./components/options/GBInsarPointOptions.vue')['default']
@@ -17,6 +18,7 @@ declare module 'vue' {
     LavaDomesOptions: typeof import('./components/options/LavaDomesOptions.vue')['default']
     MagneticOptions: typeof import('./components/options/MagneticOptions.vue')['default']
     PreviewPane: typeof import('./components/PreviewPane.vue')['default']
+    RainfallDailyOptions: typeof import('./components/options/RainfallDailyOptions.vue')['default']
     RfapDirectionOptions: typeof import('./components/options/RfapDirectionOptions.vue')['default']
     RfapDistanceOptions: typeof import('./components/options/RfapDistanceOptions.vue')['default']
     RfapEnergyOptions: typeof import('./components/options/RfapEnergyOptions.vue')['default']

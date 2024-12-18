@@ -1,10 +1,14 @@
 import { DataType } from '@/model/types'
 import DoasOptions from './DoasOptions.vue'
+import DoasScanOptions from './DoasScanOptions.vue'
 import EdmOptions from './EdmOptions.vue'
+import GBInsarAreaOptions from './GBInsarAreaOptions.vue'
+import GBInsarPointOptions from './GBInsarPointOptions.vue'
 import GpsBaselineOptions from './GpsBaselineOptions.vue'
 import GpsCoordinateOptions from './GpsCoordinateOptions.vue'
 import LavaDomesOptions from './LavaDomesOptions.vue'
 import MagneticOptions from './MagneticOptions.vue'
+import RainfallDailyOptions from './RainfallDailyOptions.vue'
 import RfapDirectionOptions from './RfapDirectionOptions.vue'
 import RfapDistanceOptions from './RfapDistanceOptions.vue'
 import RfapEnergyOptions from './RfapEnergyOptions.vue'
@@ -12,16 +16,14 @@ import RfapTypeOptions from './RfapTypeOptions.vue'
 import RsamSeismicOptions from './RsamSeismicOptions.vue'
 import SeismicEnergyOptions from './SeismicEnergyOptions.vue'
 import SeismicityOptions from './SeismicityOptions.vue'
+import ThermalAxisKaliurangOptions from './ThermalAxisKaliurangOptions.vue'
 import ThermalOptions from './ThermalOptions.vue'
 import TiltmeterOptions from './TiltmeterOptions.vue'
 import VogamosEmissionOptions from './VogamosEmissionOptions.vue'
 import VogamosTemperatureOptions from './VogamosTemperatureOptions.vue'
 import WeatherBabadanOptions from './WeatherBabadanOptions.vue'
-import WeatherPasarbubarOptions from './WeatherPasarbubarOptions.vue'
 import WeatherJurangJeroOptions from './WeatherJurangJeroOptions.vue'
-import GBInsarAreaOptions from './GBInsarAreaOptions.vue'
-import GBInsarPointOptions from './GBInsarPointOptions.vue'
-import ThermalAxisKaliurangOptions from './ThermalAxisKaliurangOptions.vue'
+import WeatherPasarbubarOptions from './WeatherPasarbubarOptions.vue'
 
 export type ComponentOptions =
   | typeof DoasOptions
@@ -47,6 +49,8 @@ export type ComponentOptions =
   | typeof GBInsarAreaOptions
   | typeof GBInsarPointOptions
   | typeof ThermalAxisKaliurangOptions
+  | typeof DoasScanOptions
+  | typeof RainfallDailyOptions
 
 export type ComponentOptionsMapInternal = { [k in DataType]: ComponentOptions }
 
@@ -74,4 +78,6 @@ export const ComponentOptionsMap: ComponentOptionsMapInternal = {
   GBInsarArea: GBInsarAreaOptions,
   GBInsarPoint: GBInsarPointOptions,
   ThermalAxisKaliurang: ThermalAxisKaliurangOptions,
+  RainfallDaily: RainfallDailyOptions,
+  DoasScan: DoasScanOptions,
 }

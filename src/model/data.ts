@@ -13,6 +13,7 @@ import {
   GpsCoordinateConfig,
   LavaDomesConfig,
   MagneticConfig,
+  RainfallDailyConfig,
   RfapTypeConfig,
   RsamSeismicConfig,
   SeismicEnergyConfig,
@@ -509,6 +510,31 @@ export function createRequest<T extends DataType>(
           field_type: config.fieldType,
           aggregate: config.aggregate,
           sky_filter_aggregate: config.skyFilterAggregate,
+        },
+      })
+    }
+
+    case 'RainfallDaily': {
+      const config = seriesConfig.config as RainfallDailyConfig
+
+      return api.get('/vaisala-rainfall/', {
+        params: {
+          start: start,
+          end: end,
+          station: config.station,
+          sampling: config.sampling,
+        },
+      })
+    }
+
+    case 'DoasScan': {
+      const config = seriesConfig.config as DoasConfig
+
+      return api.get('/doas-scan/', {
+        params: {
+          start: start,
+          end: end,
+          station: config.station,
         },
       })
     }

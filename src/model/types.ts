@@ -198,6 +198,18 @@ export interface ThermalAxisKaliurangParameterConfig {
   skyFilterAggregate: 'avg' | 'min' | 'max'
 }
 
+export interface RainfallDailyParameterConfig {
+  station: string
+  sampling: 'day' | 'hour'
+  barGap?: number
+  barWidth?: number
+}
+
+export interface DoasScanParameterConfig {
+  station: string
+  fieldType: 'flux' | 'plumecompleteness'
+}
+
 export type DoasConfig = ParameterConfig<DoasParameterConfig>
 export type EdmConfig = ParameterConfig<EdmParameterConfig>
 export type GpsBaselineConfig = ParameterConfig<GpsBaselineParameterConfig>
@@ -229,6 +241,8 @@ export type GBInsarPointConfig = ParameterConfig<GBInsarPointParameterConfig>
 export type GBInsarAreaConfig = ParameterConfig<GBInsarAreaParameterConfig>
 export type ThermalAxisKaliurangConfig =
   ParameterConfig<ThermalAxisKaliurangParameterConfig>
+export type RainfallDailyConfig = ParameterConfig<RainfallDailyParameterConfig>
+export type DoasScanConfig = ParameterConfig<DoasScanParameterConfig>
 
 export type ParameterConfigType =
   | DoasConfig
@@ -254,6 +268,8 @@ export type ParameterConfigType =
   | GBInsarPointConfig
   | GBInsarAreaConfig
   | ThermalAxisKaliurangConfig
+  | RainfallDailyConfig
+  | DoasScanConfig
 
 export interface ParameterConfigMap {
   Doas: DoasConfig
@@ -279,6 +295,8 @@ export interface ParameterConfigMap {
   GBInsarPoint: GBInsarPointConfig
   GBInsarArea: GBInsarAreaConfig
   ThermalAxisKaliurang: ThermalAxisKaliurangConfig
+  RainfallDaily: RainfallDailyConfig
+  DoasScan: DoasScanConfig
 }
 
 export type DataType = keyof ParameterConfigMap
@@ -308,6 +326,8 @@ export const DataTypeNameMap: DataTypeNameMapInternal = {
   GBInsarPoint: 'GBInsar Babadan Point',
   GBInsarArea: 'GBInsar Babadan Area',
   ThermalAxisKaliurang: 'Thermal Axis Kaliurang',
+  RainfallDaily: 'Rainfall Daily',
+  DoasScan: 'Doas Scan',
 }
 
 export interface SeismicityData {
@@ -580,6 +600,17 @@ export interface ThermalAxisKaliurangData {
   readonly temp: number
 }
 
+export interface RainfallDailyData {
+  readonly timestamp: string
+  readonly rain_acc: number
+}
+
+export interface DoasScanData {
+  readonly timestamp: string
+  readonly flux: number
+  readonly plumecompleteness: number
+}
+
 export interface DataItemTypeMap {
   Seismicity: SeismicityData
   Edm: EdmData
@@ -605,6 +636,8 @@ export interface DataItemTypeMap {
   GBInsarPoint: GBInsarPointData
   GBInsarArea: GBInsarAreaData
   ThermalAxisKaliurang: ThermalAxisKaliurangData
+  RainfallDaily: RainfallDailyData
+  DoasScan: DoasScanData
 }
 
 export enum DateIntervalType {

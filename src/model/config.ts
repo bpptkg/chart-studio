@@ -1,4 +1,9 @@
-import { DataType, ParameterConfigType } from './types'
+import {
+  DataType,
+  DoasScanConfig,
+  ParameterConfigType,
+  RainfallDailyConfig,
+} from './types'
 
 /**
  * Create default series configuration entry for certain data type.
@@ -144,6 +149,22 @@ export function createSeriesConfig<T extends DataType = DataType>(
         aggregate: 'avg',
         skyFilterAggregate: 'avg',
       }
+
+    case 'RainfallDaily': {
+      const options: RainfallDailyConfig = {
+        station: 'pasarbubar',
+        sampling: 'day',
+      }
+      return options
+    }
+
+    case 'DoasScan': {
+      const options: DoasScanConfig = {
+        station: 'babadan1',
+        fieldType: 'flux',
+      }
+      return options
+    }
 
     default:
       throw new Error(`Unsupported data type: ${dataType}`)

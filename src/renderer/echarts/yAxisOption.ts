@@ -1,5 +1,6 @@
 import {
   YAxisOption as CSYAxisOption,
+  DoasScanConfig,
   EdmConfig,
   GBInsarAreaConfig,
   GBInsarPointConfig,
@@ -7,6 +8,7 @@ import {
   GpsCoordinateConfig,
   LavaDomesConfig,
   MagneticConfig,
+  RainfallDailyConfig,
   RfapDirectionConfig,
   RfapDistanceConfig,
   RfapEnergyConfig,
@@ -27,6 +29,7 @@ import {
 } from '@/model/types'
 import { YAXisOption } from 'echarts/types/dist/shared'
 
+import { createDoasScanYAxisOption } from './doasScan'
 import { createEdmYAxisOption } from './edm'
 import { createGBInsarAreaYAxisOption } from './gbInsarArea'
 import { createGBInsarPointYAxisOption } from './gbinsarPoint'
@@ -34,6 +37,7 @@ import { createGpsBaselineYAxisOption } from './gpsBaseline'
 import { createGpsCoordinateYAxisOption } from './gpsCoordinate'
 import { createLavaDomesYAxisOption } from './lavaDomes'
 import { createMagneticYAxisOption } from './magnetic'
+import { createRainfallDailyYAxisOption } from './rainfallDaily'
 import { createRfapDirectionYAxisOption } from './rfapDirection'
 import { createRfapDistanceYAxisOption } from './rfapDistance'
 import { createRfapEnergyYAxisOption } from './rfapEnergy'
@@ -119,6 +123,10 @@ export function getYAxisOption(series: SeriesConfig[]): YAXisOption[] {
         return createThermalAxisKaliurangYAxisOption(
           config as ThermalAxisKaliurangConfig
         )
+      case 'RainfallDaily':
+        return createRainfallDailyYAxisOption(config as RainfallDailyConfig)
+      case 'DoasScan':
+        return createDoasScanYAxisOption(config as DoasScanConfig)
       default:
         return {}
     }

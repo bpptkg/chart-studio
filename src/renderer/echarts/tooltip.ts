@@ -7,6 +7,7 @@ import {
 } from 'echarts/types/dist/shared'
 
 import { createDoasSeriesTooltip } from './doas'
+import { createDoasScanSeriesTooltip } from './doasScan'
 import { createEdmSeriesTooltip } from './edm'
 import { createGBInsarAreaSeriesTooltip } from './gbInsarArea'
 import { createGBInsarPointSeriesTooltip } from './gbinsarPoint'
@@ -14,6 +15,7 @@ import { createGpsBaselineSeriesTooltip } from './gpsBaseline'
 import { createGpsCoordinateSeriesTooltip } from './gpsCoordinate'
 import { createLavaDomesSeriesTooltip } from './lavaDomes'
 import { createMagneticSeriesTooltip } from './magnetic'
+import { createRainfallDailySeriesTooltip } from './rainfallDaily'
 import { createRfapDirectionSeriesTooltip } from './rfapDirection'
 import { createRfapDistanceSeriesTooltip } from './rfapDistance'
 import { createRfapEnergySeriesTooltip } from './rfapEnergy'
@@ -108,6 +110,12 @@ export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
           break
         case 'ThermalAxisKaliurang':
           tooltip.push(createThermalAxisKaliurangSeriesTooltip(params, index))
+          break
+        case 'RainfallDaily':
+          tooltip.push(createRainfallDailySeriesTooltip(params, index))
+          break
+        case 'DoasScan':
+          tooltip.push(createDoasScanSeriesTooltip(params, index))
           break
       }
     } catch (error) {

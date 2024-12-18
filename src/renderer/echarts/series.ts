@@ -3,6 +3,8 @@ import {
   DateInterval,
   DoasConfig,
   DoasData,
+  DoasScanConfig,
+  DoasScanData,
   EdmConfig,
   EdmData,
   GBInsarAreaConfig,
@@ -17,6 +19,8 @@ import {
   LavaDomesData,
   MagneticConfig,
   MagneticData,
+  RainfallDailyConfig,
+  RainfallDailyData,
   RfapDirectionConfig,
   RfapDirectionData,
   RfapDistanceConfig,
@@ -55,6 +59,7 @@ import { SeriesOption } from 'echarts'
 import objectHash from 'object-hash'
 
 import { createDoasSeries } from './doas'
+import { createDoasScanSeries } from './doasScan'
 import { createEdmSeries } from './edm'
 import { createEmptySeries } from './empty'
 import { createGBInsarAreaSeries } from './gbInsarArea'
@@ -63,6 +68,7 @@ import { createGpsBaselineSeries } from './gpsBaseline'
 import { createGpsCoordinateSeries } from './gpsCoordinate'
 import { createLavaDomesSeries } from './lavaDomes'
 import { createMagneticSeries } from './magnetic'
+import { createRainfallDailySeries } from './rainfallDaily'
 import { createRfapDirectionSeries } from './rfapDirection'
 import { createRfapDistanceSeries } from './rfapDistance'
 import { createRfapEnergySeries } from './rfapEnergy'
@@ -366,6 +372,26 @@ export function renderSeries(
                 xAxisIndex,
                 yAxisIndex,
               })
+            }
+
+            case 'RainfallDaily': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as RainfallDailyData[]
+
+              const cfg = config as RainfallDailyConfig
+              return createRainfallDailySeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'DoasScan': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as DoasScanData[]
+              const cfg = config as DoasScanConfig
+              return createDoasScanSeries(data, cfg, { xAxisIndex, yAxisIndex })
             }
 
             default:
