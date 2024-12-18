@@ -35,7 +35,7 @@
           >
             <v-row>
               <v-col>
-                <v-switch v-model="visible" label="Visible"></v-switch>
+                <v-switch v-model="visible" label="Visible" inset color="primary"></v-switch>
               </v-col>
               <v-col>
                 <v-select
@@ -139,7 +139,7 @@
   const visible = computed({
     get() {
       if (isDef(seriesIndex.value)) {
-        return seriesConfig.value[seriesIndex.value].config.visible || true
+        return seriesConfig.value[seriesIndex.value].config.visible ?? true
       } else {
         return true
       }
