@@ -25,15 +25,22 @@
         <splitpanes>
           <pane size="40">
             <div class="dtype-selector">
-              <v-list
-                mandatory
-                v-model:selected="selected"
-                select-strategy="single-leaf"
-              >
+              <div class="pa-2">
+                <v-text-field
+                  v-model="search"
+                  label="Search"
+                  dense
+                  hide-details
+                  placeholder="Search data type"
+                  clearable
+                ></v-text-field>
+              </div>
+              <v-list mandatory select-strategy="single-leaf">
                 <v-list-item
                   v-for="dataType in dataTypes"
                   :key="dataType.value"
                   :value="dataType.value"
+                  @click="selected = [dataType.value]"
                 >
                   <v-list-item-title>{{ dataType.text }}</v-list-item-title>
                 </v-list-item>
@@ -68,6 +75,7 @@
 </template>
 
 <script setup lang="ts">
+  import Fuse from 'fuse.js'
   import { ComponentOptionsMap } from '@/components/options'
   import { createSeriesConfig } from '@/model/config'
   import { DataType, DataTypeNameMap, ParameterConfigMap } from '@/model/types'
@@ -76,18 +84,37 @@
   import { Pane, Splitpanes } from 'splitpanes'
   import { Ref, ref, watch } from 'vue'
 
+  interface DataTypeItem {
+    value: DataType
+    text: string
+  }
+
   const chartStore = useChartStore()
   const workspaceStore = useWorkspaceStore()
 
-  function getDataTypes() {
+  function getDataTypes(): DataTypeItem[] {
     const names = Object.keys(DataTypeNameMap) as Array<DataType>
     return names.map((name) => {
       return { value: name, text: DataTypeNameMap[name] }
     })
   }
 
+  const fuse = new Fuse<DataTypeItem>(getDataTypes(), {
+    keys: ['text'],
+    threshold: 0.3,
+  })
+  const search = ref('')
+
+  const dataTypes = computed(() => {
+    return search.value
+      ? fuse
+          .search(search.value)
+          .map((item) => item.item)
+          .slice(0, 10)
+      : getDataTypes()
+  })
+
   const dialog = ref(false)
-  const dataTypes = ref(getDataTypes())
 
   const selected: Ref<DataType[]> = ref(['Seismicity'])
   const config: Ref<ParameterConfigMap[DataType]> = ref(
@@ -116,6 +143,7 @@
     })
 
     dialog.value = false
+    search.value = ''
 
     // Set index to newly created subplot.
     workspaceStore.setSubplotIndex(chartStore.subplots.length - 1)
