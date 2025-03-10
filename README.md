@@ -67,10 +67,6 @@ Then, configure the Nginx location path to the following:
         try_files $uri $uri/ /index.html = 404;
     }
 
-In order to build the project, Chart Studio needs to read Git commit to mark
-build revision. It may not work if you compile the source code without including
-Git history, i.e. downloading the source code instead of cloning.
-
 ## License
 
 [MIT](https://github.com/bpptkg/chart-studio/blob/master/LICENSE)

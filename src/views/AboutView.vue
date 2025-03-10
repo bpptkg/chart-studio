@@ -28,10 +28,6 @@
                     Version:
                     <span class="text--secondary">{{ version }}</span>
                   </div>
-                  <div class="my-1">
-                    Commit:
-                    <span class="text--secondary">{{ commitHash }}</span>
-                  </div>
                   <div>
                     Build date:
                     <span class="text--secondary">
@@ -93,7 +89,6 @@
   import { useTheme } from 'vuetify'
 
   const version = import.meta.env.APP_VERSION
-  const commitHash = import.meta.env.COMMIT_HASH
   const buildDate = import.meta.env.BUILD_DATE
 
   const buildDuration = moment(buildDate).fromNow()

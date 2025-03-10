@@ -19,8 +19,6 @@ const packageJson = JSON.parse(
 )
 const APP_VERSION = packageJson.version
 
-const COMMIT_HASH = execSync('git rev-parse HEAD').toString().trim()
-
 const BUILD_DATE = new Date().toISOString()
 
 // https://vitejs.dev/config/
@@ -70,7 +68,6 @@ export default defineConfig({
   ],
   define: {
     'import.meta.env.APP_VERSION': JSON.stringify(APP_VERSION),
-    'import.meta.env.COMMIT_HASH': JSON.stringify(COMMIT_HASH),
     'import.meta.env.BUILD_DATE': JSON.stringify(BUILD_DATE),
   },
   resolve: {
