@@ -500,7 +500,7 @@ export function createRequest<T extends DataType>(
     case 'ThermalAxisKaliurang': {
       const config = seriesConfig.config as ThermalAxisKaliurangConfig
 
-      return api.get('/thermal-axis-kal/', {
+      return api.get('/thermal-axis-kal-perarea/', {
         params: {
           start: start,
           end: end,

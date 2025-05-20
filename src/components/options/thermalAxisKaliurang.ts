@@ -8,6 +8,7 @@ export const areaOptions = [
   { value: 'asap', title: 'Asap' },
   { value: 'bebeng', title: 'Bebeng' },
   { value: 'boyong', title: 'Boyong' },
+  { value: 'bukaan', title: 'Bukaan' },
   { value: 'krasak', title: 'Krasak' },
   { value: 'kubah-bd', title: 'Kubah BD' },
   { value: 'kubah-bd-1', title: 'Kubah BD 1' },
