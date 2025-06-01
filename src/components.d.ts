@@ -31,6 +31,7 @@ declare module 'vue' {
     SeismicityOptions: typeof import('./components/options/SeismicityOptions.vue')['default']
     SidebarLeftIcon: typeof import('./components/icons/SidebarLeftIcon.vue')['default']
     SidebarRightIcon: typeof import('./components/icons/SidebarRightIcon.vue')['default']
+    ThermalAxisDelesOptions: typeof import('./components/options/ThermalAxisDelesOptions.vue')['default']
     ThermalAxisKaliurangOptions: typeof import('./components/options/ThermalAxisKaliurangOptions.vue')['default']
     ThermalOptions: typeof import('./components/options/ThermalOptions.vue')['default']
     TiltmeterOptions: typeof import('./components/options/TiltmeterOptions.vue')['default']

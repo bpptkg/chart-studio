@@ -19,6 +19,7 @@ import {
   SeismicEnergyConfig,
   SeismicityConfig,
   SeriesConfig,
+  ThermalAxisDelesConfig,
   ThermalAxisKaliurangConfig,
   ThermalConfig,
   TiltmeterConfig,
@@ -348,7 +349,7 @@ export function createRequest<T extends DataType>(
     }
 
     case 'WeatherPasarbubar': {
-      return api.get('/meteorology/pasarbubar/rainfall/', {
+      return api.get('/meteorology/pasarbubar2/rainfall/', {
         params: {
           timestamp__gte: start,
           timestamp__lt: end,
@@ -510,6 +511,21 @@ export function createRequest<T extends DataType>(
           field_type: config.fieldType,
           aggregate: config.aggregate,
           sky_filter_aggregate: config.skyFilterAggregate,
+        },
+      })
+    }
+
+    case 'ThermalAxisDeles': {
+      const config = seriesConfig.config as ThermalAxisDelesConfig
+
+      return api.get('/thermal-axis-deles-perarea/', {
+        params: {
+          start: start,
+          end: end,
+          area: config.area,
+          sampling: config.sampling,
+          field_type: config.fieldType,
+          aggregate: config.aggregate,
         },
       })
     }

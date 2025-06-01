@@ -198,6 +198,13 @@ export interface ThermalAxisKaliurangParameterConfig {
   skyFilterAggregate: 'avg' | 'min' | 'max'
 }
 
+export interface ThermalAxisDelesParameterConfig {
+  area: string
+  sampling: 'day' | 'hour' | 'minute'
+  fieldType: 'min_temp' | 'max_temp' | 'avg_temp'
+  aggregate: 'avg' | 'min' | 'max'
+}
+
 export interface RainfallDailyParameterConfig {
   station: string
   sampling: 'day' | 'hour'
@@ -241,6 +248,7 @@ export type GBInsarPointConfig = ParameterConfig<GBInsarPointParameterConfig>
 export type GBInsarAreaConfig = ParameterConfig<GBInsarAreaParameterConfig>
 export type ThermalAxisKaliurangConfig =
   ParameterConfig<ThermalAxisKaliurangParameterConfig>
+export type ThermalAxisDelesConfig = ParameterConfig<ThermalAxisDelesParameterConfig>
 export type RainfallDailyConfig = ParameterConfig<RainfallDailyParameterConfig>
 export type DoasScanConfig = ParameterConfig<DoasScanParameterConfig>
 
@@ -268,6 +276,7 @@ export type ParameterConfigType =
   | GBInsarPointConfig
   | GBInsarAreaConfig
   | ThermalAxisKaliurangConfig
+  | ThermalAxisDelesConfig
   | RainfallDailyConfig
   | DoasScanConfig
 
@@ -295,6 +304,7 @@ export interface ParameterConfigMap {
   GBInsarPoint: GBInsarPointConfig
   GBInsarArea: GBInsarAreaConfig
   ThermalAxisKaliurang: ThermalAxisKaliurangConfig
+  ThermalAxisDeles: ThermalAxisDelesConfig
   RainfallDaily: RainfallDailyConfig
   DoasScan: DoasScanConfig
 }
@@ -326,6 +336,7 @@ export const DataTypeNameMap: DataTypeNameMapInternal = {
   GBInsarPoint: 'GBInsar Babadan Point',
   GBInsarArea: 'GBInsar Babadan Area',
   ThermalAxisKaliurang: 'Thermal Axis Kaliurang',
+  ThermalAxisDeles: 'Thermal Axis Deles',
   RainfallDaily: 'Rainfall Daily',
   DoasScan: 'Doas Scan',
 }
@@ -600,6 +611,11 @@ export interface ThermalAxisKaliurangData {
   readonly temp: number
 }
 
+export interface ThermalAxisDelesData {
+  readonly timestamp: string
+  readonly temp: number
+}
+
 export interface RainfallDailyData {
   readonly timestamp: string
   readonly rain_acc: number
@@ -636,6 +652,7 @@ export interface DataItemTypeMap {
   GBInsarPoint: GBInsarPointData
   GBInsarArea: GBInsarAreaData
   ThermalAxisKaliurang: ThermalAxisKaliurangData
+  ThermalAxisDeles: ThermalAxisDelesData
   RainfallDaily: RainfallDailyData
   DoasScan: DoasScanData
 }

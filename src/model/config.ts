@@ -150,6 +150,14 @@ export function createSeriesConfig<T extends DataType = DataType>(
         skyFilterAggregate: 'avg',
       }
 
+    case 'ThermalAxisDeles':
+      return {
+        area: 'Asap',
+        sampling: 'hour',
+        fieldType: 'max_temp',
+        aggregate: 'avg',
+      }
+
     case 'RainfallDaily': {
       const options: RainfallDailyConfig = {
         station: 'pasarbubar',

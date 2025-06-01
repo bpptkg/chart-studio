@@ -25,7 +25,7 @@ export const useUserStore = defineStore('user', {
   },
   getters: {
     initials: (state) => {
-      return state.user ? state.user.username[0].toUpperCase() : 'U'
+      return state.user && state.user.username ? state.user.username[0].toUpperCase() : 'U'
     },
   },
   actions: {

@@ -31,6 +31,7 @@ import { createVogamosTemperatureSeriesTooltip } from './vogamosTemperature'
 import { createWeatherBabadanSeriesTooltip } from './weatherBabadan'
 import { createWeatherJurangJeroSeriesTooltip } from './weatherJurangJero'
 import { createWeatherPasarbubarSeriesTooltip } from './weatherPasarbubar'
+import { createThermalAxisDelesSeriesTooltip } from './thermalAxisDeles'
 
 export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
   const tooltip: string[] = []
@@ -110,6 +111,9 @@ export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
           break
         case 'ThermalAxisKaliurang':
           tooltip.push(createThermalAxisKaliurangSeriesTooltip(params, index))
+          break
+        case 'ThermalAxisDeles':
+          tooltip.push(createThermalAxisDelesSeriesTooltip(params, index))
           break
         case 'RainfallDaily':
           tooltip.push(createRainfallDailySeriesTooltip(params, index))

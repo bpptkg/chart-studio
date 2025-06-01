@@ -37,6 +37,8 @@ import {
   SeismicityData,
   SeriesDataKey,
   SubplotConfig,
+  ThermalAxisDelesConfig,
+  ThermalAxisDelesData,
   ThermalAxisKaliurangConfig,
   ThermalAxisKaliurangData,
   ThermalConfig,
@@ -78,6 +80,7 @@ import { createSeismicEnergySeries } from './seismicEnergy'
 import { createSeismicitySeries } from './seismicity'
 import { createThermalSeries } from './thermal'
 import { createThermalAxisKaliurangSeries } from './thermalAxisKaliurang'
+import {createThermalAxisDelesSeries} from './thermalAxisDeles'
 import { createTiltmeterSeries } from './tiltmeter'
 import { findYAxisIndex } from './util'
 import { createVogamosEmissionSeries } from './vogamosEmission'
@@ -369,6 +372,18 @@ export function renderSeries(
 
               const cfg = config as ThermalAxisKaliurangConfig
               return createThermalAxisKaliurangSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'ThermalAxisDeles': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as ThermalAxisDelesData[]
+
+              const cfg = config as ThermalAxisDelesConfig
+              return createThermalAxisDelesSeries(data, cfg, {
                 xAxisIndex,
                 yAxisIndex,
               })
