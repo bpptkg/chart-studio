@@ -518,7 +518,7 @@ export function createRequest<T extends DataType>(
     case 'ThermalAxisDeles': {
       const config = seriesConfig.config as ThermalAxisDelesConfig
 
-      return api.get('/thermal-axis-deles-perarea/', {
+      return api.get('/thermal-axis-del-perarea/', {
         params: {
           start: start,
           end: end,
