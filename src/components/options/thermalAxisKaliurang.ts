@@ -12,6 +12,8 @@ export const areaOptions = [
   { value: 'krasak', title: 'Krasak' },
   { value: 'kubah-bd', title: 'Kubah BD' },
   { value: 'kubah-bd-1', title: 'Kubah BD 1' },
+  { value: 'sky-l', title: 'Sky L' },
+  { value: 'sky-r', title: 'Sky R' },
 ]
 
 export const fieldTypeOptions = [
