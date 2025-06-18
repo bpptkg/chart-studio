@@ -8,10 +8,10 @@ export const areaOptions = [
   { value: 'Asap', title: 'Asap' },
   { value: 'Fumarol', title: 'Fumarol' },
   { value: 'KubahBD', title: 'Kubah BD' },
-  { value: 'KubahTengah', title: 'Kubah Tengah' },
+  { value: 'Kubah_Tengah', title: 'Kubah Tengah' },
   { value: 'Lv1920', title: 'Lava 1920' },
-  { value: 'Sky_L', title: 'Sky L' },
-  { value: 'Sky_R', title: 'Sky R' },
+  { value: 'SkyL', title: 'Sky L' },
+  { value: 'SkyR', title: 'Sky R' },
 ]
 
 export const fieldTypeOptions = [
