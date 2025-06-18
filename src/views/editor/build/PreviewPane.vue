@@ -50,11 +50,25 @@
         :open-on-focus="false"
       >
         <template v-slot:activator="{ props }">
+          <v-btn icon size="small" v-bind="props" @click="handleExportToImage">
+            <v-icon>mdi-export</v-icon>
+          </v-btn>
+        </template>
+        <span>Export to Image</span>
+      </v-tooltip>
+
+      <v-tooltip
+        bottom
+        :open-delay="500"
+        :open-on-click="false"
+        :open-on-focus="false"
+      >
+        <template v-slot:activator="{ props }">
           <v-btn icon size="small" v-bind="props" @click="handleDownload">
             <v-icon>mdi-tray-arrow-down</v-icon>
           </v-btn>
         </template>
-        <span>Download</span>
+        <span>Export to JSON</span>
       </v-tooltip>
     </template>
 
@@ -73,7 +87,13 @@
         <v-btn color="blue" variant="text" @click="handleTryAgain">
           Try Again
         </v-btn>
-        <v-btn icon size="small" variant="text" @click="snackbar = false" class="ml-2">
+        <v-btn
+          icon
+          size="small"
+          variant="text"
+          @click="snackbar = false"
+          class="ml-2"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </template>
@@ -84,20 +104,22 @@
 </template>
 
 <script setup lang="ts">
-  import 'echarts'
-  import VChart from 'vue-echarts'
-  import FileSaver from 'file-saver'
   import PreviewPane from '@/components/PreviewPane.vue'
-  import { computed, nextTick, onMounted, Ref, ref } from 'vue'
+  import { MAX_ZOOM_SCALE, MIN_ZOOM_SCALE, ZOOM_DELTA } from '@/constants/zoom'
+  import { renderToECharts } from '@/renderer/echarts/render'
+  import { exportToFile } from '@/renderer/file/exporting'
+  import { getDataURLOptions } from '@/shared/echarts'
   import { useChartStore } from '@/stores/chart'
   import { useDataStore } from '@/stores/data'
-  import { storeToRefs } from 'pinia'
-  import { renderToECharts } from '@/renderer/echarts/render'
-  import { getDataURLOptions, defaultFileName } from '@/shared/echarts'
-  import { AxiosError } from 'axios'
-  import { EChartsOption } from 'echarts'
   import Panzoom, { PanzoomObject } from '@panzoom/panzoom'
-  import { MIN_ZOOM_SCALE, MAX_ZOOM_SCALE, ZOOM_DELTA } from '@/constants/zoom'
+  import { AxiosError } from 'axios'
+  import 'echarts'
+  import { EChartsOption } from 'echarts'
+  import FileSaver from 'file-saver'
+  import JSZip from 'jszip'
+  import { storeToRefs } from 'pinia'
+  import { computed, nextTick, onMounted, Ref, ref } from 'vue'
+  import VChart from 'vue-echarts'
 
   const chartStore = useChartStore()
   const dataStore = useDataStore()
@@ -156,11 +178,29 @@
     }
   })
 
-  function handleDownload() {
+  function handleExportToImage() {
     if (chart.value) {
+      const currentTime = Date.now().toFixed(0)
+      const fileNameWithTimestamp = `chart-${currentTime}`
       const dataURL = chart.value.getDataURL(getDataURLOptions)
-      FileSaver.saveAs(dataURL, `${chartStore.title || defaultFileName}.png`)
+      FileSaver.saveAs(
+        dataURL,
+        `${chartStore.title || fileNameWithTimestamp}.png`
+      )
     }
+  }
+
+  function handleDownload() {
+    const currentTime = Date.now().toFixed(0)
+    const fileNameWithTimestamp = `export-${currentTime}.zip`
+    const zip = new JSZip()
+    zip.file(
+      `export-${currentTime}.json`,
+      JSON.stringify(exportToFile(renderModel.value), null, 2)
+    )
+    zip.generateAsync({ type: 'blob' }).then((content) => {
+      FileSaver.saveAs(content, fileNameWithTimestamp)
+    })
   }
 
   onMounted(() => {
