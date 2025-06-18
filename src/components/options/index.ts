@@ -16,6 +16,9 @@ import RfapTypeOptions from './RfapTypeOptions.vue'
 import RsamSeismicOptions from './RsamSeismicOptions.vue'
 import SeismicEnergyOptions from './SeismicEnergyOptions.vue'
 import SeismicityOptions from './SeismicityOptions.vue'
+import ThermalAxisBabadanOptions from './ThermalAxisBabadanOptions.vue'
+import ThermalAxisDelesOptions from './ThermalAxisDelesOptions.vue'
+import ThermalAxisJurangJeroOptions from './ThermalAxisJurangJeroOptions.vue'
 import ThermalAxisKaliurangOptions from './ThermalAxisKaliurangOptions.vue'
 import ThermalOptions from './ThermalOptions.vue'
 import TiltmeterOptions from './TiltmeterOptions.vue'
@@ -24,7 +27,6 @@ import VogamosTemperatureOptions from './VogamosTemperatureOptions.vue'
 import WeatherBabadanOptions from './WeatherBabadanOptions.vue'
 import WeatherJurangJeroOptions from './WeatherJurangJeroOptions.vue'
 import WeatherPasarbubarOptions from './WeatherPasarbubarOptions.vue'
-import ThermalAxisDelesOptions from './ThermalAxisDelesOptions.vue'
 
 export type ComponentOptions =
   | typeof DoasOptions
@@ -51,6 +53,8 @@ export type ComponentOptions =
   | typeof GBInsarPointOptions
   | typeof ThermalAxisKaliurangOptions
   | typeof ThermalAxisDelesOptions
+  | typeof ThermalAxisBabadanOptions
+  | typeof ThermalAxisJurangJeroOptions
   | typeof DoasScanOptions
   | typeof RainfallDailyOptions
 
@@ -81,6 +85,8 @@ export const ComponentOptionsMap: ComponentOptionsMapInternal = {
   GBInsarPoint: GBInsarPointOptions,
   ThermalAxisKaliurang: ThermalAxisKaliurangOptions,
   ThermalAxisDeles: ThermalAxisDelesOptions,
+  ThermalAxisBabadan: ThermalAxisBabadanOptions,
+  ThermalAxisJurangJero: ThermalAxisJurangJeroOptions,
   RainfallDaily: RainfallDailyOptions,
   DoasScan: DoasScanOptions,
 }

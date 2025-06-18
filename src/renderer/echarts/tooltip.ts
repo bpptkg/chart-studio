@@ -24,6 +24,9 @@ import { createRsamSeismicSeriesTooltip } from './rsamSeismic'
 import { createSeismicEnergySeriesTooltip } from './seismicEnergy'
 import { createSeismicitySeriesTooltip } from './seismicity'
 import { createThermalSeriesTooltip } from './thermal'
+import { createThermalAxisBabadanSeriesTooltip } from './thermalAxisBabadan'
+import { createThermalAxisDelesSeriesTooltip } from './thermalAxisDeles'
+import { createThermalAxisJurangJeroSeriesTooltip } from './thermalAxisJurangJero'
 import { createThermalAxisKaliurangSeriesTooltip } from './thermalAxisKaliurang'
 import { createTiltmeterSeriesTooltip } from './tiltmeter'
 import { createVogamosEmissionSeriesTooltip } from './vogamosEmission'
@@ -31,7 +34,6 @@ import { createVogamosTemperatureSeriesTooltip } from './vogamosTemperature'
 import { createWeatherBabadanSeriesTooltip } from './weatherBabadan'
 import { createWeatherJurangJeroSeriesTooltip } from './weatherJurangJero'
 import { createWeatherPasarbubarSeriesTooltip } from './weatherPasarbubar'
-import { createThermalAxisDelesSeriesTooltip } from './thermalAxisDeles'
 
 export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
   const tooltip: string[] = []
@@ -114,6 +116,12 @@ export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
           break
         case 'ThermalAxisDeles':
           tooltip.push(createThermalAxisDelesSeriesTooltip(params, index))
+          break
+        case 'ThermalAxisBabadan':
+          tooltip.push(createThermalAxisBabadanSeriesTooltip(params, index))
+          break
+        case 'ThermalAxisJurangJero':
+          tooltip.push(createThermalAxisJurangJeroSeriesTooltip(params, index))
           break
         case 'RainfallDaily':
           tooltip.push(createRainfallDailySeriesTooltip(params, index))

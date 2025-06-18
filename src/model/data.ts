@@ -19,7 +19,9 @@ import {
   SeismicEnergyConfig,
   SeismicityConfig,
   SeriesConfig,
+  ThermalAxisBabadanConfig,
   ThermalAxisDelesConfig,
+  ThermalAxisJurangJeroConfig,
   ThermalAxisKaliurangConfig,
   ThermalConfig,
   TiltmeterConfig,
@@ -519,6 +521,36 @@ export function createRequest<T extends DataType>(
       const config = seriesConfig.config as ThermalAxisDelesConfig
 
       return api.get('/thermal-axis-del-perarea/', {
+        params: {
+          start: start,
+          end: end,
+          area: config.area,
+          sampling: config.sampling,
+          field_type: config.fieldType,
+          aggregate: config.aggregate,
+        },
+      })
+    }
+
+    case 'ThermalAxisBabadan': {
+      const config = seriesConfig.config as ThermalAxisBabadanConfig
+
+      return api.get('/thermal-axis-bbd-perarea/', {
+        params: {
+          start: start,
+          end: end,
+          area: config.area,
+          sampling: config.sampling,
+          field_type: config.fieldType,
+          aggregate: config.aggregate,
+        },
+      })
+    }
+
+    case 'ThermalAxisJurangJero': {
+      const config = seriesConfig.config as ThermalAxisJurangJeroConfig
+
+      return api.get('/thermal-axis-jrg-perarea/', {
         params: {
           start: start,
           end: end,

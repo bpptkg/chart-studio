@@ -37,8 +37,12 @@ import {
   SeismicityData,
   SeriesDataKey,
   SubplotConfig,
+  ThermalAxisBabadanConfig,
+  ThermalAxisBabadanData,
   ThermalAxisDelesConfig,
   ThermalAxisDelesData,
+  ThermalAxisJurangJeroConfig,
+  ThermalAxisJurangJeroData,
   ThermalAxisKaliurangConfig,
   ThermalAxisKaliurangData,
   ThermalConfig,
@@ -79,8 +83,10 @@ import { createRsamSeismicSeries } from './rsamSeismic'
 import { createSeismicEnergySeries } from './seismicEnergy'
 import { createSeismicitySeries } from './seismicity'
 import { createThermalSeries } from './thermal'
+import { createThermalAxisBabadanSeries } from './thermalAxisBabadan'
+import { createThermalAxisDelesSeries } from './thermalAxisDeles'
+import { createThermalAxisJurangJeroSeries } from './thermalAxisJurangJero'
 import { createThermalAxisKaliurangSeries } from './thermalAxisKaliurang'
-import {createThermalAxisDelesSeries} from './thermalAxisDeles'
 import { createTiltmeterSeries } from './tiltmeter'
 import { findYAxisIndex } from './util'
 import { createVogamosEmissionSeries } from './vogamosEmission'
@@ -384,6 +390,30 @@ export function renderSeries(
 
               const cfg = config as ThermalAxisDelesConfig
               return createThermalAxisDelesSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'ThermalAxisBabadan': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as ThermalAxisBabadanData[]
+
+              const cfg = config as ThermalAxisBabadanConfig
+              return createThermalAxisBabadanSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'ThermalAxisJurangJero': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as ThermalAxisJurangJeroData[]
+
+              const cfg = config as ThermalAxisJurangJeroConfig
+              return createThermalAxisJurangJeroSeries(data, cfg, {
                 xAxisIndex,
                 yAxisIndex,
               })

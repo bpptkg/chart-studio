@@ -18,6 +18,9 @@ import {
   SeismicityConfig,
   SeriesConfig,
   SubplotConfig,
+  ThermalAxisBabadanConfig,
+  ThermalAxisDelesConfig,
+  ThermalAxisJurangJeroConfig,
   ThermalAxisKaliurangConfig,
   ThermalConfig,
   TiltmeterConfig,
@@ -53,6 +56,9 @@ import { createVogamosTemperatureYAxisOption } from './vogamosTemperature'
 import { createWeatherBabadanYAxisOption } from './weatherBabadan'
 import { createWeatherJurangJeroYAxisOption } from './weatherJurangJero'
 import { createWeatherPasarbubarYAxisOption } from './weatherPasarbubar'
+import { createThermalAxisDelesYAxisOption } from './thermalAxisDeles'
+import { createThermalAxisBabadanYAxisOption } from './thermalAxisBabadan'
+import { createThermalAxisJurangJeroYAxisOption } from './thermalAxisJurangJero'
 
 export function getLeftYAxisSeries(subplot: SubplotConfig): SeriesConfig[] {
   return subplot.series.filter((series) => {
@@ -122,6 +128,18 @@ export function getYAxisOption(series: SeriesConfig[]): YAXisOption[] {
       case 'ThermalAxisKaliurang':
         return createThermalAxisKaliurangYAxisOption(
           config as ThermalAxisKaliurangConfig
+        )
+      case 'ThermalAxisDeles':
+        return createThermalAxisDelesYAxisOption(
+          config as ThermalAxisDelesConfig
+        )
+      case 'ThermalAxisBabadan':
+        return createThermalAxisBabadanYAxisOption(
+          config as ThermalAxisBabadanConfig
+        )
+      case 'ThermalAxisJurangJero':
+        return createThermalAxisJurangJeroYAxisOption(
+          config as ThermalAxisJurangJeroConfig
         )
       case 'RainfallDaily':
         return createRainfallDailyYAxisOption(config as RainfallDailyConfig)

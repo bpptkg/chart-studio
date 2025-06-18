@@ -144,13 +144,29 @@ export function createSeriesConfig<T extends DataType = DataType>(
       return {
         area: 'kubah-bd',
         sampling: 'hour',
-        useSkyFilter: true,
+        useSkyFilter: false,
         fieldType: 'max_temp',
         aggregate: 'avg',
         skyFilterAggregate: 'avg',
       }
 
     case 'ThermalAxisDeles':
+      return {
+        area: 'Asap',
+        sampling: 'hour',
+        fieldType: 'max_temp',
+        aggregate: 'avg',
+      }
+
+    case 'ThermalAxisBabadan':
+      return {
+        area: 'Asap',
+        sampling: 'hour',
+        fieldType: 'max_temp',
+        aggregate: 'avg',
+      }
+
+    case 'ThermalAxisJurangJero':
       return {
         area: 'Asap',
         sampling: 'hour',
