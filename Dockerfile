@@ -4,12 +4,12 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json ./
+RUN yarn install
 
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
 FROM nginx:alpine
 
