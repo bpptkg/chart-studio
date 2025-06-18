@@ -41,24 +41,24 @@ Clone the project from GitHub repository:
 
 Install all package dependencies:
 
-    yarn install
+    npm install
 
 Compiles and hot-reloads for development:
 
-    yarn serve
+    npm run dev
 
 Compiles and minifies for production:
 
-    yarn build
+    npm run build
 
 Lints and fixes files if you made a change to the script:
 
-    yarn lint
+    npm run lint
 
 ## Deployment
 
 Create `.env.production.local` file and setup environment variable settings.
-Finally, run `yarn build` to compile and minify for production.
+Finally, run `npm run build` to compile and minify for production.
 
 Then, configure the Nginx location path to the following:
 
