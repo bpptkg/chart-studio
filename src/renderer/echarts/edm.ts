@@ -98,7 +98,7 @@ export function createEdmYAxisOption(config: EdmConfig): YAXisOption {
     case 'rate':
       return { name: 'Rate (mm/day)', nameGap: 40 }
     case 'csd':
-      return { name: 'CSD (cm)', nameGap: 40 }
+      return { name: 'CSD (mm)', nameGap: 40 }
     default:
       return {}
   }
