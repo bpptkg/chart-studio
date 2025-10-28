@@ -8,6 +8,8 @@ COPY package.json ./
 RUN npm config set registry https://registry.npmmirror.com \
  && npm install
 
+RUN printenv | sort
+
 COPY . .
 
 RUN npm run build
