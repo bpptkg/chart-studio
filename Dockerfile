@@ -5,7 +5,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 COPY package.json ./
-RUN npm install
+RUN npm config set registry https://registry.npmmirror.com \
+ && npm install
 
 COPY . .
 
