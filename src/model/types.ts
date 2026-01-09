@@ -716,6 +716,7 @@ export interface DataItemTypeMap {
   ThermalAxisJurangJero: ThermalAxisJurangJeroData
   RainfallDaily: RainfallDailyData
   DoasScan: DoasScanData
+  GBInsarTurgoArea: GBInsarTurgoAreaData
 }
 
 export enum DateIntervalType {
