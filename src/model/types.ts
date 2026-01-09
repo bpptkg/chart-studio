@@ -189,6 +189,16 @@ export interface GBInsarAreaParameterConfig {
   sampling: 'day' | 'hour' | 'minute'
 }
 
+export interface GBInsarTurgoAreaParameterConfig {
+  field:
+    | 'kubahbd_ka'
+    | 'kubahbd_pu'
+    | 'lava1911'
+    | 'lava1920'
+    | 'lava1992'
+  sampling: 'day' | 'hour' | 'minute'
+}
+
 export interface ThermalAxisKaliurangParameterConfig {
   area: string
   sampling: 'day' | 'hour' | 'minute'
@@ -270,6 +280,8 @@ export type ThermalAxisJurangJeroConfig =
   ParameterConfig<ThermalAxisJurangJeroParameterConfig>
 export type RainfallDailyConfig = ParameterConfig<RainfallDailyParameterConfig>
 export type DoasScanConfig = ParameterConfig<DoasScanParameterConfig>
+export type GBInsarTurgoAreaConfig =
+  ParameterConfig<GBInsarTurgoAreaParameterConfig>
 
 export type ParameterConfigType =
   | DoasConfig
@@ -300,6 +312,7 @@ export type ParameterConfigType =
   | ThermalAxisJurangJeroConfig
   | RainfallDailyConfig
   | DoasScanConfig
+  | GBInsarTurgoAreaConfig
 
 export interface ParameterConfigMap {
   Doas: DoasConfig
@@ -330,6 +343,7 @@ export interface ParameterConfigMap {
   ThermalAxisJurangJero: ThermalAxisJurangJeroConfig
   RainfallDaily: RainfallDailyConfig
   DoasScan: DoasScanConfig
+  GBInsarTurgoArea: GBInsarTurgoAreaConfig
 }
 
 export type DataType = keyof ParameterConfigMap
@@ -364,6 +378,7 @@ export const DataTypeNameMap: DataTypeNameMapInternal = {
   ThermalAxisJurangJero: 'Thermal Axis Jurang Jero',
   RainfallDaily: 'Rainfall Daily',
   DoasScan: 'Doas Scan',
+  GBInsarTurgoArea: 'GBInsar Turgo Area',
 }
 
 export interface SeismicityData {
@@ -629,6 +644,15 @@ export interface GBInsarPointData {
   readonly t1992: number
   readonly t1998: number
   readonly titik_stabil: number
+}
+
+export interface GBInsarTurgoAreaData {
+  readonly timestamp: string
+  readonly kubahbd_ka: number
+  readonly kubahbd_pu: number
+  readonly lava1911: number
+  readonly lava1920: number
+  readonly lava1992: number
 }
 
 export interface ThermalAxisKaliurangData {

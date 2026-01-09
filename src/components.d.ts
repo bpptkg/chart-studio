@@ -13,6 +13,7 @@ declare module 'vue' {
     EdmOptions: typeof import('./components/options/EdmOptions.vue')['default']
     GBInsarAreaOptions: typeof import('./components/options/GBInsarAreaOptions.vue')['default']
     GBInsarPointOptions: typeof import('./components/options/GBInsarPointOptions.vue')['default']
+    GBInsarTurgoAreaOptions: typeof import('./components/options/GBInsarTurgoAreaOptions.vue')['default']
     GpsBaselineOptions: typeof import('./components/options/GpsBaselineOptions.vue')['default']
     GpsCoordinateOptions: typeof import('./components/options/GpsCoordinateOptions.vue')['default']
     LavaDomesOptions: typeof import('./components/options/LavaDomesOptions.vue')['default']

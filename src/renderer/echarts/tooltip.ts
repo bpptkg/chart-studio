@@ -34,6 +34,7 @@ import { createVogamosTemperatureSeriesTooltip } from './vogamosTemperature'
 import { createWeatherBabadanSeriesTooltip } from './weatherBabadan'
 import { createWeatherJurangJeroSeriesTooltip } from './weatherJurangJero'
 import { createWeatherPasarbubarSeriesTooltip } from './weatherPasarbubar'
+import { createGBInsarTurgoAreaSeriesTooltip } from './gbInsarTurgoArea'
 
 export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
   const tooltip: string[] = []
@@ -128,6 +129,11 @@ export function tooltipFormatter(formatterParams: TopLevelFormatterParams) {
           break
         case 'DoasScan':
           tooltip.push(createDoasScanSeriesTooltip(params, index))
+          break
+        case 'GBInsarTurgoArea':
+          tooltip.push(createGBInsarTurgoAreaSeriesTooltip(params, index))
+          break
+        default:
           break
       }
     } catch (error) {

@@ -51,7 +51,7 @@ export function createGBInsarAreaSeriesTooltip(
   tooltip.push(
     `<div>
     ${circle(color)}
-    ${name}: ${value[1] ? value[1].toFixed(3) : NO_DATA} m
+    ${name}: ${value[1] ? value[1].toFixed(3) : NO_DATA} mm
     </div>
     `
   )

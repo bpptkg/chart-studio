@@ -4,6 +4,7 @@ import {
   EdmConfig,
   GBInsarAreaConfig,
   GBInsarPointConfig,
+  GBInsarTurgoAreaConfig,
   GpsBaselineConfig,
   GpsCoordinateConfig,
   LavaDomesConfig,
@@ -59,6 +60,7 @@ import { createWeatherPasarbubarYAxisOption } from './weatherPasarbubar'
 import { createThermalAxisDelesYAxisOption } from './thermalAxisDeles'
 import { createThermalAxisBabadanYAxisOption } from './thermalAxisBabadan'
 import { createThermalAxisJurangJeroYAxisOption } from './thermalAxisJurangJero'
+import { createGBInsarTurgoAreaYAxisOption } from './gbInsarTurgoArea'
 
 export function getLeftYAxisSeries(subplot: SubplotConfig): SeriesConfig[] {
   return subplot.series.filter((series) => {
@@ -145,6 +147,10 @@ export function getYAxisOption(series: SeriesConfig[]): YAXisOption[] {
         return createRainfallDailyYAxisOption(config as RainfallDailyConfig)
       case 'DoasScan':
         return createDoasScanYAxisOption(config as DoasScanConfig)
+      case 'GBInsarTurgoArea':
+        return createGBInsarTurgoAreaYAxisOption(
+          config as GBInsarTurgoAreaConfig
+        )
       default:
         return {}
     }

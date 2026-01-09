@@ -28,3 +28,11 @@ export const gbInsarAreaFields = [
   { value: 'bawah1998', title: '1998 Bawah' },
   { value: 'puncak_kubah', title: 'Puncak Kubah' },
 ]
+
+export const gbInsarTurgoAreaFields = [
+  { value: 'kubahbd_ka', title: 'Kubah BD KA' },
+  { value: 'kubahbd_pu', title: 'Kubah BD PU' },
+  { value: 'lava1911', title: 'Lava 1911' },
+  { value: 'lava1920', title: 'Lava 1920' },
+  { value: 'lava1992', title: 'Lava 1992' },
+]

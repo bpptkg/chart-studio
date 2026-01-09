@@ -12,3 +12,10 @@ export const api: AxiosInstance = axios.create({
     Authorization: `Api-Key ${bmaAPIKey}`,
   },
 })
+
+export const api2: AxiosInstance = axios.create({
+  baseURL: `${bmaURL}/api/v2/`,
+  headers: {
+    Authorization: `Api-Key ${bmaAPIKey}`,
+  },
+})

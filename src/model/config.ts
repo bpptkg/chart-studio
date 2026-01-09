@@ -140,6 +140,12 @@ export function createSeriesConfig<T extends DataType = DataType>(
         sampling: 'hour',
       }
 
+    case 'GBInsarTurgoArea':
+      return {
+        field: 'kubahbd_ka',
+        sampling: 'hour',
+      }
+
     case 'ThermalAxisKaliurang':
       return {
         area: 'kubah-bd',

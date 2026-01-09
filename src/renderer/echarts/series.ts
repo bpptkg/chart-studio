@@ -11,6 +11,8 @@ import {
   GBInsarAreaData,
   GBInsarPointConfig,
   GBInsarPointData,
+  GBInsarTurgoAreaConfig,
+  GBInsarTurgoAreaData,
   GpsBaselineConfig,
   GpsBaselineData,
   GpsCoordinateConfig,
@@ -94,6 +96,7 @@ import { createVogamosTemperatureSeries } from './vogamosTemperature'
 import { createWeatherBabadanSeries } from './weatherBabadan'
 import { createWeatherJurangJeroSeries } from './weatherJurangJero'
 import { createWeatherPasarbubarSeries } from './weatherPasarbubar'
+import { createGBInsarTurgoAreaSeries } from './gbInsarTurgoArea'
 
 export function renderSeries(
   subplots: SubplotConfig[],
@@ -366,6 +369,18 @@ export function renderSeries(
 
               const cfg = config as GBInsarPointConfig
               return createGBInsarPointSeries(data, cfg, {
+                xAxisIndex,
+                yAxisIndex,
+              })
+            }
+
+            case 'GBInsarTurgoArea': {
+              const data = (
+                key in dataRepository ? dataRepository[key] : []
+              ) as GBInsarTurgoAreaData[]
+              
+              const cfg = config as GBInsarTurgoAreaConfig
+              return createGBInsarTurgoAreaSeries(data, cfg, {
                 xAxisIndex,
                 yAxisIndex,
               })

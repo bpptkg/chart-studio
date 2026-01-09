@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import moment from 'moment'
-import { api } from './api'
+import { api, api2 } from './api'
 import {
   DataItemTypeMap,
   DataType,
@@ -9,6 +9,7 @@ import {
   EdmConfig,
   GBInsarAreaConfig,
   GBInsarPointConfig,
+  GBInsarTurgoAreaConfig,
   GpsBaselineConfig,
   GpsCoordinateConfig,
   LavaDomesConfig,
@@ -491,6 +492,19 @@ export function createRequest<T extends DataType>(
       const config = seriesConfig.config as GBInsarAreaConfig
 
       return api.get('/gbinsar/babadanarea/', {
+        params: {
+          start: start,
+          end: end,
+          sampling: config.sampling,
+        },
+        signal: controller.signal,
+      })
+    }
+
+    case 'GBInsarTurgoArea': {
+      const config = seriesConfig.config as GBInsarTurgoAreaConfig
+
+      return api2.get('/gbinsar/turgo-area/', {
         params: {
           start: start,
           end: end,

@@ -110,8 +110,8 @@
       ? fuse
           .search(search.value)
           .map((item) => item.item)
-          .slice(0, 10)
-      : getDataTypes()
+          .slice(0, 10).sort((a, b) => a.text.localeCompare(b.text))
+      : getDataTypes().sort((a, b) => a.text.localeCompare(b.text))
   })
 
   const dialog = ref(false)
